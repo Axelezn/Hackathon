@@ -1,25 +1,30 @@
 <?php
+session_start();
 
-// Appel de tous les Contrôleurs
-require_once './controllers/BaseController.php';
-require_once './controllers/AuthController.php';
-require_once './controllers/UsersController.php';;
+$action = $_GET['action'] ?? 'home';
 
-// require_once 
-
-$path = $_GET['path'] ?? 'homepage';
-$path = filter_var($path, FILTER_SANITIZE_URL);
-$path = explode('.', $path);
-
-// Appel en fonction du contrôleur
-$controller = ucfirst(path[0]) . 'Controller';
-$method = $path[1];
-
-try {
-    (new $controller)->$method();
-} catch (Exception $e) {
-    // Gérer l'erreur
-    echo 'Erreur : ' . $e->getMessage();
-    die();
+// Rediriger vers la connexion si non connecté
+if (!isset($_SESSION['user']) && !in_array($action, ['signin', 'signup'])) {
+    header('Location: index.php?action=signin');
+    exit();
 }
-?>
+
+// Appeler les bonnes actions
+require_once __DIR__ . '/controllers/UsersController.php';
+$controller = new UsersController();
+
+switch ($action) {
+    case 'signup':
+        $controller->signup();
+        break;
+    case 'signin':
+        $controller->signin();
+        break;
+    case 'logout':
+        session_destroy();
+        header('Location: index.php?action=signin');
+        exit();
+    default:
+        $controller->home(); // page d'accueil
+        break;
+}
