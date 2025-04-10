@@ -20,6 +20,23 @@ switch ($action) {
     case 'signin':
         $controller->signin();
         break;
+        case 'profile':
+            $controller->profile();
+        break;
+    case 'home':
+        $controller->home();
+        break;
+    case 'activity':
+        require_once 'controllers/ActivityController.php';
+        $controller = new ActivityController();
+        $controller->index();
+        break;
+    case 'delete_account':
+        $controller = new ProfileController();
+        $controller->delete();
+        break;
+        
+                  
     case 'logout':
         session_destroy();
         header('Location: index.php?action=signin');
