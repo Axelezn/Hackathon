@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZIP - Trouvez votre coiffeur</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="top-bar">
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="logo-container">
+          <span class="logo">ZIP</span>
+        </div>
+        <i class="fas fa-shopping-cart cart-icon"></i>
+      </div>
+
+      <div class="map-container">
+        <img
+          src="votre_image_de_carte.png"
+          alt="Carte"
+          style="width: 100%; height: 100%; object-fit: cover"
+        />
+      </div>
+
+      <div class="around-you">
+        <h2>Around you</h2>
+        <div class="barber-list">
+          <div class="barber-item">
+            <i class="fas fa-user-circle barber-icon"></i>
+            <div class="barber-name">Maya</div>
+            <div class="barber-details">(details)</div>
+          </div>
+          <div class="barber-item">
+            <i class="fas fa-user-circle barber-icon"></i>
+            <div class="barber-name">Jean</div>
+            <div class="barber-details">(details)</div>
+          </div>
+          <div class="barber-item">
+            <i class="fas fa-user-circle barber-icon"></i>
+            <div class="barber-name">Sophia</div>
+            <div class="barber-details">(details)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input
+          type="text"
+          class="search-input"
+          placeholder="Search cuts/barbers"
+        />
+        <button class="now-button">
+          Now <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+
+      <div class="options-list">
+        <div class="option-item">
+          <i class="far fa-bookmark option-icon"></i>
+          Choose a saved barber
+        </div>
+        <div class="option-item">
+          <i class="fas fa-map-marker-alt option-icon"></i>
+          Set destination on map
+        </div>
+        <div class="option-item">
+          <i class="fas fa-user-plus option-icon"></i>
+          Request a cut for someone else
+        </div>
+      </div>
+
+      <div class="bottom-navigation">
+        <div class="nav-item">
+          <i class="fas fa-home nav-icon"></i>
+          <span class="nav-text">Home</span>
+        </div>
+        <div class="nav-item">
+          <i class="fas fa-list-alt nav-icon"></i>
+          <span class="nav-text">Activity</span>
+        </div>
+        <div class="nav-item">
+          <i class="fas fa-user-circle nav-icon"></i>
+          <span class="nav-text">Account</span>
+        </div>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>
