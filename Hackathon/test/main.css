@@ -1,3 +1,4 @@
+/* Styles de base (présents dans votre code) */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -197,9 +198,4 @@ body {
     padding: 10px;
     font-size: 12px;
     color: #777;
-}
-
-.visily-link {
-    color: #007bff;
-    text-decoration: none;
 }
