@@ -74,7 +74,7 @@ class UsersController {
         session_start();
     
         if (!isset($_SESSION['user'])) {
-            header('Location: index.php?action=login');
+            header('Location: index.php?action=edit_profile');
             exit();
         }
     
@@ -102,19 +102,67 @@ class UsersController {
     }
     
     public function deleteAccount() {
-        session_start();
+        session_start(); // ← Manquait ici
     
         if (!isset($_SESSION['user'])) {
-            header('Location: index.php?action=login');
+            header('Location: index.php?action=signin');
             exit();
         }
     
+        $user = $_SESSION['user'];
         $model = new User();
-        $model->deleteById($_SESSION['user']['id']);
-        session_destroy();
+        $model->deleteById($user['id']);
     
-        header('Location: index.php?action=login');
+        session_destroy();
+        header('Location: index.php?action=signin'); // ← Assure-toi que "login" est bien l'action pour la page de connexion
         exit();
     }
+    
+    public function book() {
+    if (!isset($_GET['id'])) {
+        header("Location: index.php?action=book");
+        exit();
+    }
+
+    $barberId = $_GET['id'];
+    $barber = $this->userModel->getUserById($barberId);
+
+    if (!$barber || $barber['etat'] != 1) {
+        echo "Coiffeur non trouvé.";
+        return;
+    }
+
+    // Tu peux ajouter un faux planning ici (ex. jours et créneaux disponibles)
+    $planning = [
+        "Lundi" => ["10:00", "11:00", "14:00"],
+        "Mardi" => ["09:00", "13:00", "15:00"],
+        "Mercredi" => ["10:00", "16:00"],
+    ];
+
+    include __DIR__ . '/../views/booking.php';
+}
+
+public function confirmBooking() {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!isset($_SESSION['user'])) {
+            header("Location: index.php?action=signin");
+            exit();
+        }
+
+        $data = [
+            'client_id' => $_SESSION['user']['id'],
+            'coiffeur_id' => $_POST['barber_id'],
+            'jour' => $_POST['jour'],
+            'heure' => $_POST['heure']
+        ];
+
+        if ($this->userModel->createAppointment($data)) {
+            header("Location: index.php?action=profile&message=rdv_ok");
+        } else {
+            echo "Erreur lors de la réservation. Veuillez réessayer.";
+        }
+    }
+}
+
     
 }

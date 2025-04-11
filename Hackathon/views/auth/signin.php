@@ -28,7 +28,6 @@
     <div class="overlay"></div>
     <div class="login-container">
         <div class="logo">
-            <img src="assets/login-image.jpg" alt="Logo ZIP" width="50" height="50">
             ZIP
         </div>
         <h2 class="connection-title">CONNEXION</h2>

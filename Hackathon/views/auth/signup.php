@@ -40,22 +40,21 @@
     <div class="overlay"></div>
     <div class="login-container">
         <div class="logo">
-            <img src="assets/login-image.jpg" alt="Logo ZIP" width="50" height="50">
             ZIP
         </div>
         <h2 class="connection-title">S'inscrire</h2>
-        <form>
+        <form method="POST">
             <div class="form-group">
-                <label for="Nom">Nom</label>
-                <input type="text" id="Nom" name="nom" required>
+                <label>Nom</label>
+                <input type="text" name="nom" required>
             </div>
             <div class="form-group">
-                <label for="Prenom">Prénom</label>
-                <input type="text" id="Prenom" name="prenom" required>
+                <label>Prénom</label>
+                <input type="text" name="prenom" required>
             </div>
             <div class="form-group">
-                <label for="genre">Genre</label>
-                <select id="genre" name="sexe">
+                <label>Genre</label>
+                <select name="sexe">
                     <option value="">Sexe</option>
                     <option value="M">Homme</option>
                     <option value="F">Femme</option>
@@ -63,20 +62,20 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="adresse">adresse</label>
-                <input type="text" id="adresse" name="adresse" required>
+                <label>adresse</label>
+                <input type="text" name="adresse" required>
             </div>
             <div class="form-group">
-                <label for="email">Adresse mail</label>
-                <input type="email" id="email" name="email" required>
+                <label>Adresse mail</label>
+                <input type="email" name="email" required>
             </div>
             <div class="form-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="mdp" required>
+                <label>Mot de passe</label>
+                <input type="password" name="mdp" required>
             </div>
             <div class="form-group">
-                <label for="num_tel">Numéro de téléphone</label>
-                <input type="text" id="tel" name="num_tel" required>
+                <label>Numéro de téléphone</label>
+                <input type="text" name="num_tel" required>
             </div>
             <button type="submit" class="login-button">S'inscrire</button>
         </form>

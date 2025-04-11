@@ -31,15 +31,12 @@
         <div class="barber-list">
         <?php if (!empty($barbers)): ?>
             <?php foreach ($barbers as $barber): ?>
-                <div class="barber-item">
-                <i class="fas fa-user-circle barber-icon"></i>
-                <div class="barber-name"><?= htmlspecialchars($barber['prenom']) ?> <?= htmlspecialchars($barber['nom']) ?></div>
-                <div class="barber-details">
-                    <?= htmlspecialchars($barber['adresse']) ?><br>
-                    Tarif: <?= htmlspecialchars($barber['tarif']) ?> €
+                <div class="barber-card">
+                    <h3><?= htmlspecialchars($barber['prenom']) ?> <?= htmlspecialchars($barber['nom']) ?></h3>
+                    <p>Email : <?= htmlspecialchars($barber['email']) ?></p>
+                    <a href="index.php?action=book&id=<?= $barber['id'] ?>" class="btn btn-primary">Réserver avec ce coiffeur</a>
                 </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
             <?php else: ?>
             <p>Aucun coiffeur actif pour le moment.</p>
             <?php endif; ?>

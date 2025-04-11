@@ -31,16 +31,28 @@ switch ($action) {
         $controller = new ActivityController();
         $controller->index();
         break;
-    case 'delete_account':
+    case 'edit_profile':
+        require_once 'controllers/ProfileController.php';
         $controller = new ProfileController();
-        $controller->delete();
+        $controller->editProfile();
+        break;
+    case 'delete_account': 
+        $controller = new UsersController();
+        $controller->deleteAccount();
         break;
         
-                  
+    case 'confirm_booking':
+        $controller->confirmBooking();    
+        break;
+    case 'book':
+        $controller->book();    
+        break;
+        
     case 'logout':
         session_destroy();
         header('Location: index.php?action=signin');
         exit();
+        
     default:
         $controller->home(); // page d'accueil
         break;

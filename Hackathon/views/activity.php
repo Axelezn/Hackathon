@@ -13,7 +13,7 @@
   <div class="activity-container">
 
     <div class="map-preview">
-      <img src="assets/images/map-sample.png" alt="Map preview">
+      <img src="assets/map-assets.PNG" alt="Map preview">
     </div>
 
     <div class="activity-content">
@@ -37,7 +37,7 @@
           <p>How we are sustainable.</p>
           <button class="learn-btn">Learn more</button>
         </div>
-        <img src="assets/images/sustainability.png" class="sustain-image" alt="Sustainable">
+        <img src="assets/login-image.jpg" class="sustain-image" alt="Sustainable">
       </div>
 
       <div class="location-section">
@@ -64,7 +64,24 @@
     </div>
 
     <?php include 'views/partials/footer.php'; ?>
-
+    <div class="rendezvous-list">
+    <h2>Vos rendez-vous</h2>
+    <?php if (!empty($rendezVousList)): ?>
+        <ul>
+            <?php foreach ($rendezVousList as $rdv): ?>
+                <li>
+                    Avec <?= htmlspecialchars($rdv['coiffeur_id']) ?> <?= htmlspecialchars($rdv['coiffeur_id']) ?> 
+                    le <?= htmlspecialchars($rdv['jour']) ?> à <?= htmlspecialchars($rdv['heure']) ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Aucun rendez-vous pour le moment.</p>
+    <?php endif; ?>
+</div>
   </div>
+
 </body>
 </html>
+
+

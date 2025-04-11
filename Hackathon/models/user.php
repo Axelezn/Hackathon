@@ -50,15 +50,11 @@ class User {
     
     public function getRendezVous($userId) {
         $query = "
-            SELECT rdv.*, u.nom AS coiffeur_nom, u.prenom AS coiffeur_prenom
-            FROM rendez_vous rdv
-            JOIN users u ON u.id = rdv.id_coiffeur
-            WHERE rdv.id_client = :id_client
-            ORDER BY rdv.date DESC
+            SELECT * FROM rendez_vous WHERE client_id = :client_id
         ";
         
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id_client', $userId);
+        $stmt->bindParam(':client_id', $userId);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -79,10 +75,27 @@ class User {
     }
     
     public function deleteById($id) {
-        $query = "DELETE FROM $this->table WHERE id = :id";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id);
-        return $stmt->execute();
+        try {
+            $sql = "DELETE FROM users WHERE id = :id";
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute(['id' => $id]);
+        } catch (PDOException $e) {
+            echo "Erreur PDO : " . $e->getMessage();
+            return false;
+        }
     }
+
+    public function createAppointment($data) {
+        $sql = "INSERT INTO rendez_vous (client_id, coiffeur_id, jour, heure) 
+                VALUES (:client_id, :coiffeur_id, :jour, :heure)";
+        $stmt = $this->conn->prepare($sql);
+        return $stmt->execute([
+            'client_id' => $data['client_id'],
+            'coiffeur_id' => $data['coiffeur_id'],
+            'jour' => $data['jour'],
+            'heure' => $data['heure'],
+        ]);
+    }
+    
     
 }

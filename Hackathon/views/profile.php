@@ -21,7 +21,7 @@ if (!isset($_SESSION['user'])) {
 <body>
     <div class="profile-card">
     <div class="map-header">
-        <img src="https://i.imgur.com/O1RmRym.png" alt="Josh" class="avatar">
+        <img src="assets/user.png" alt="Josh" class="avatar">
     </div>
         <div class="info">
             <h2><?= htmlspecialchars($_SESSION['user']['prenom']) ?> <?= htmlspecialchars($_SESSION['user']['nom']) ?></h2>
@@ -34,28 +34,28 @@ if (!isset($_SESSION['user'])) {
     </div>
     <div class="stats">
         <div class="stat">
-        <strong>2,314</strong>
-        Cuts
+        <strong>3.141</strong>
+        Coupes
         </div>
         <div class="stat">
         <strong>4.99</strong>
-        Rating
+        evaluation
         </div>
         <div class="stat">
-        <strong>2</strong>
-        Years Exp.
+        <strong>3 ans</strong>
+        D'expérience
         </div>
     </div>
     <div class="achievements">
-        <h3>Achievements</h3>
+        <h3>Ils m'ont fait confiance</h3>
         <div class="badges">
         <div>
-            <img src="https://i.imgur.com/zfQ2Uxv.png" alt="Trusted Partner">
-            <div style="font-size:12px;">Trusted Partner</div>
+            <img src="assets/user2.png" alt="Trusted Partner">
+            <div style="font-size:12px;">Emilie Clark</div>
         </div>
         <div>
-            <img src="https://i.imgur.com/UrxmdGh.png" alt="Certified Pro">
-            <div style="font-size:12px;">Certified Professional</div>
+            <img src="assets/cricri.jpg" alt="Certified Pro">
+            <div style="font-size:12px;">Christophe</div>
         </div>
         </div>
     </div>
@@ -71,10 +71,10 @@ if (!isset($_SESSION['user'])) {
     
     <form action="index.php?action=delete_account" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.');">
     <button type="submit" class="submit-btn" style="background-color: red;">Supprimer mon compte</button>
-    </form>
+</form>
+</form>
 
     </div>
-
     </div>
 </body>
 </html>
