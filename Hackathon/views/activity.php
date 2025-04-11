@@ -41,11 +41,27 @@
       </div>
 
       <div class="location-section">
-        <p><i class="fas fa-map-marker-alt"></i> Home · 4.3 km</p>
-        <span>3342 Hill Street, Jacksonville, FL 32202</span>
-        <a href="#">Change or Add</a>
+      <div class="rendezvous-list">
+            <h2>Vos rendez-vous</h2>
+            <?php if (!empty($rendezVousList)): ?>
+                <ul>
+                    <?php foreach ($rendezVousList as $rdv): ?>
+                        <div class="location-section">
+                            <p><i class="fas fa-map-marker-alt"></i> 
+                                <?php echo isset($rdv['ville']) ? htmlspecialchars($rdv['ville']) : 'Ville non définie'; ?>
+                            </p>
+                            <span>
+                                <?php echo isset($rdv['adresse']) ? htmlspecialchars($rdv['adresse']) : 'Adresse non définie'; ?>
+                            </span>
+                            <a href="#">Change or Add</a>
+                        </div>
+                    <?php endforeach; ?>
+                </ul>
+            <?php else: ?>
+                <p>Aucun rendez-vous pour le moment.</p>
+            <?php endif; ?>
+        </div>
       </div>
-
       <div class="payment-section">
         <p><strong>21.42€</strong></p>
         <span><i class="fab fa-cc-mastercard"></i> Mastercard 2321</span>
@@ -64,23 +80,7 @@
     </div>
 
     <?php include 'views/partials/footer.php'; ?>
-    <div class="rendezvous-list">
-    <h2>Vos rendez-vous</h2>
-    <?php if (!empty($rendezVousList)): ?>
-        <ul>
-            <?php foreach ($rendezVousList as $rdv): ?>
-                <li>
-                    Avec <?= htmlspecialchars($rdv['coiffeur_id']) ?> <?= htmlspecialchars($rdv['coiffeur_id']) ?> 
-                    le <?= htmlspecialchars($rdv['jour']) ?> à <?= htmlspecialchars($rdv['heure']) ?>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    <?php else: ?>
-        <p>Aucun rendez-vous pour le moment.</p>
-    <?php endif; ?>
-</div>
   </div>
-
 </body>
 </html>
 

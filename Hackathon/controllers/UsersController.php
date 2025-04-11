@@ -153,7 +153,9 @@ public function confirmBooking() {
             'client_id' => $_SESSION['user']['id'],
             'coiffeur_id' => $_POST['barber_id'],
             'jour' => $_POST['jour'],
-            'heure' => $_POST['heure']
+            'heure' => $_POST['heure'],
+            'adresse' => $_POST['adresse'],
+            'ville' => $_POST['ville']
         ];
 
         if ($this->userModel->createAppointment($data)) {

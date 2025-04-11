@@ -19,5 +19,12 @@
     <?php endforeach; ?>
   </select>
 
+
+  <label>Adresse</label>
+  <input type="text" name="adresse" required>
+
+  <label>Ville</label>
+  <input type="text" name="ville" required>
+
   <button type="submit">Confirmer le rendez-vous</button>
 </form>

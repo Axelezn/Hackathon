@@ -86,14 +86,16 @@ class User {
     }
 
     public function createAppointment($data) {
-        $sql = "INSERT INTO rendez_vous (client_id, coiffeur_id, jour, heure) 
-                VALUES (:client_id, :coiffeur_id, :jour, :heure)";
+        $sql = "INSERT INTO rendez_vous (client_id, coiffeur_id, jour, heure, adresse, ville) 
+                VALUES (:client_id, :coiffeur_id, :jour, :heure, :adresse, :ville)";
         $stmt = $this->conn->prepare($sql);
         return $stmt->execute([
             'client_id' => $data['client_id'],
             'coiffeur_id' => $data['coiffeur_id'],
             'jour' => $data['jour'],
             'heure' => $data['heure'],
+            'adresse' => $data['adresse'],
+            'ville' => $data['ville'],
         ]);
     }
     
